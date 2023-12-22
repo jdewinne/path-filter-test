@@ -6,23 +6,6 @@ on:
       - main
 
 jobs:
-  build:
-    defaults:
-      run:
-        working-directory: ./cluster-provisioner
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v4
-        with:
-          go-version-file: cluster-provisioner/go.mod
-          cache-dependency-path: |
-            cluster-provisioner/go.sum
-      - run: make build
-      - run: gh release create ${{ github.ref_name }} ./bin/cluster-provisioner --generate-notes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   run-infra-filter:
     runs-on: ubuntu-22.04
     outputs:
