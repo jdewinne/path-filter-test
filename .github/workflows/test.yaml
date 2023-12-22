@@ -27,5 +27,5 @@ jobs:
           base: ${{ steps.previoustag.outputs.PREVIOUS_TAG }}
           filters: |
             run-infra:
-              - 'infra/ansible/!(no-trigger)/**'
+              - 'infra/ansible/inventory/!(no-trigger)/**'
               - 'infra/ansible/roles/!(cluster_provisioner)/**'
